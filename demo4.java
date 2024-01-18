@@ -1,11 +1,16 @@
 import java.util.Scanner;
 
-class emp
+interface Company
+{
+	void iDCard();
+}
+abstract class emp
 {
 	String name;
 	int id, age;
 	String desig;
 	double salary;
+	double pf;
 	emp()
 	{
 		Scanner sc=new Scanner(System.in);
@@ -20,17 +25,6 @@ class emp
 
 		//display();
 	}
-
-	
-}
-class Developer extends emp
-{
-	int flag = 0;
-	Developer()
-	{
-		desig="Developer"; 
-		salary=50000;
-	}
 	void display()
 	{
 		System.out.println("Your ID:"+id);
@@ -38,9 +32,25 @@ class Developer extends emp
 		System.out.println("Your title:"+desig);
 		System.out.println("Your salary:"+salary);
 		System.out.println("Your age:"+age);
+		System.out.println("Your pf:"+pf);
 	} 
-        void RaiseSalary()
+	abstract void RaiseSalary();
+	abstract void pf();
+
+	
+}
+class Developer extends emp  implements Company
+{
+	int flag = 0;
+	Developer()
 	{
+		desig="Developer"; 
+		salary=50000;
+		pf();
+	}
+	
+	void RaiseSalary()
+	 {
 		if(flag <1)
 		{
 			salary = salary + 0.15*salary;
@@ -51,24 +61,27 @@ class Developer extends emp
 			System.out.println("Caution, Salary already raised");
 		}
 	}
+	void pf()
+	{
+		pf = (double)0.08*(double)salary;
+		
+	}
+	public void iDCard()
+	{
+		System.out.println("A block Access");
+	}
 	
 }
-class Clerk extends emp
+class Clerk extends emp  implements Company
 {
 	int flag = 0;
 	Clerk()
 	{
 		desig="Clerk"; 
 		salary=25000;
+		pf();
 	}
-	void display()
-	{
-		System.out.println("Your ID:"+id);
-		System.out.println("Your name:"+name);
-		System.out.println("Your title:"+desig);
-		System.out.println("Your salary:"+salary);
-		System.out.println("Your age:"+age);
-	} 
+	
 	void RaiseSalary()
 	{
 		if(flag <1)
@@ -81,23 +94,25 @@ class Clerk extends emp
 			System.out.println("Caution, Salary already raised");
 		}
 	}
+	void pf()
+	{
+		pf = (double)0.08*(double)salary;
+	}
+	public void iDCard()
+	{
+		System.out.println("B block Access");
+	}
 }
-class Manager extends emp
+class Manager extends emp  implements Company
 {
 	int flag = 0;
 	Manager()
 	{
 		desig="Manager"; 
 		salary=70000;
+		pf();
 	}
-	void display()
-	{
-		System.out.println("Your ID:"+id);
-		System.out.println("Your name:"+name);
-		System.out.println("Your title:"+desig);
-		System.out.println("Your salary:"+salary);
-		System.out.println("Your age:"+age);
-	} 
+	
 	void RaiseSalary()
 	{
 		if(flag <1)
@@ -110,23 +125,25 @@ class Manager extends emp
 			System.out.println("Caution, Salary already raised");
 		}
 	}
+	void pf()
+	{
+		pf = (double)0.08*(double)salary;
+		}
+	public void iDCard()
+	{
+		System.out.println("A+B+C+D blocks Access");
+	}
 }
-class Tester extends emp
+class Tester extends emp implements Company
 {
 	int flag = 0;
 	Tester()
 	{
 		desig="Tester"; 
 		salary=40000;
+		pf();
 	}
-	void display()
-	{
-		System.out.println("Your ID:"+id);
-		System.out.println("Your name:"+name);
-		System.out.println("Your title:"+desig);
-		System.out.println("Your salary:"+salary);
-		System.out.println("Your age:"+age);
-	} 
+	
 	void RaiseSalary()
 	{
 		if(flag <1)
@@ -138,6 +155,15 @@ class Tester extends emp
 		else{
 			System.out.println("Caution, Salary already raised");
 		}
+	}
+	void pf()
+	{
+		pf = (double)0.08*(double)salary;
+		
+	}
+	public void iDCard()
+	{
+		System.out.println("D block Access");
 	}
 }
 class demo4
@@ -209,18 +235,22 @@ class demo4
 					if(ch2==1)
 					{
 						d.display();
+						d.iDCard();
 					}
 					else if(ch2==2)
 					{
 						c.display();
+						c.iDCard();
 					}
 					else if(ch2==3)
 					{
 						m.display();
+						m.iDCard();
 					}
 					else if(ch2==4)
 					{
 						t.display();
+						t.iDCard();
 					}
 					else if(ch2==5)
 					{

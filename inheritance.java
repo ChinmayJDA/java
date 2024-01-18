@@ -32,4 +32,5 @@ public class inheritance
 -> 	We can only assign values to variables in child constructor when they are 
 declared in the parent class.
 -> 	Multiple inheritance is not allowed in java
+->	For name ambiguity resolution between parent and child class, super keyword is used.
 */
