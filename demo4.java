@@ -1,8 +1,16 @@
 import java.util.Scanner;
-
 interface Company
 {
 	void iDCard();
+	default void addSal()
+	{
+		System.out.println("In Java8 we can write default method belongs to object");
+	}
+	static void cab()
+	{
+		System.out.println("In Java8 we can write static method not belongs to object");
+	}
+	String CompanyName = "Blue Yonder";
 }
 abstract class emp
 {
@@ -11,6 +19,8 @@ abstract class emp
 	String desig;
 	double salary;
 	double pf;
+
+
 	emp()
 	{
 		Scanner sc=new Scanner(System.in);
@@ -33,13 +43,15 @@ abstract class emp
 		System.out.println("Your salary:"+salary);
 		System.out.println("Your age:"+age);
 		System.out.println("Your pf:"+pf);
+		System.out.println("Company "+ Company.CompanyName);
+//		System.out.println("Your pf:"+pf);
 	} 
 	abstract void RaiseSalary();
 	abstract void pf();
 
 	
 }
-class Developer extends emp  implements Company
+final class Developer extends emp  implements Company
 {
 	int flag = 0;
 	Developer()
@@ -47,6 +59,7 @@ class Developer extends emp  implements Company
 		desig="Developer"; 
 		salary=50000;
 		pf();
+
 	}
 	
 	void RaiseSalary()
@@ -72,13 +85,14 @@ class Developer extends emp  implements Company
 	}
 	
 }
-class Clerk extends emp  implements Company
+final class Clerk extends emp  implements Company
 {
 	int flag = 0;
 	Clerk()
 	{
 		desig="Clerk"; 
 		salary=25000;
+
 		pf();
 	}
 	
@@ -103,13 +117,14 @@ class Clerk extends emp  implements Company
 		System.out.println("B block Access");
 	}
 }
-class Manager extends emp  implements Company
+final class Manager extends emp  implements Company
 {
 	int flag = 0;
 	Manager()
 	{
 		desig="Manager"; 
 		salary=70000;
+
 		pf();
 	}
 	
@@ -134,13 +149,14 @@ class Manager extends emp  implements Company
 		System.out.println("A+B+C+D blocks Access");
 	}
 }
-class Tester extends emp implements Company
+final class Tester extends emp implements Company
 {
 	int flag = 0;
 	Tester()
 	{
 		desig="Tester"; 
 		salary=40000;
+
 		pf();
 	}
 	
